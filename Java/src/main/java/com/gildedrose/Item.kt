@@ -1,21 +1,7 @@
-package com.gildedrose;
+package com.gildedrose
 
-public class Item {
-
-    public String name;
-
-    public int sellIn;
-
-    public int quality;
-
-    public Item(String name, int sellIn, int quality) {
-        this.name = name;
-        this.sellIn = sellIn;
-        this.quality = quality;
-    }
-
-   @Override
-   public String toString() {
-        return this.name + ", " + this.sellIn + ", " + this.quality;
+class Item(@JvmField val name: String, @JvmField var sellIn: Int, @JvmField var quality: Int) {
+    override fun toString(): String {
+        return "${this.name}, ${this.sellIn}, ${this.quality}"
     }
 }
