@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'org.jetbrains.kotlin.jvm'
 }
 
 repositories {
@@ -7,21 +8,26 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
-    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.6.2'
-    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.11.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.11.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:2.0.20'
+
 }
 
 group = 'com.gildedrose'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '21'
 
 test {
     useJUnitPlatform()
 }
 
-task texttest(type: JavaExec) {
-    main = "com.gildedrose.TexttestFixture"
+tasks.register('texttest', JavaExec) {
+    mainClass = "com.gildedrose.TexttestFixture"
     classpath = sourceSets.test.runtimeClasspath
     args "30"
+}
+
+kotlin {
+    jvmToolchain(21)
 }
