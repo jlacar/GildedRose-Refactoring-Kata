@@ -22,6 +22,17 @@ class BackstagePassTest {
     }
 
     @Test
+    void quality_increases_by_3_on_the_day_of_the_concert() {
+        var startQuality = 5;
+        GildedRose app = new GildedRose(new Item[] {backStagePass(1, startQuality)});
+
+        app.updateQuality();
+
+        var increase = app.items[0].quality - startQuality;
+        assertEquals(3, increase);
+    }
+
+    @Test
     void quality_increases_by_1_when_sellIn_goes_from_11_to_10() {
         var startQuality = 5;
         GildedRose app = new GildedRose(new Item[] {backStagePass(11, startQuality)});
